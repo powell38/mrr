@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Football Match Sign-Up</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    .form-container, .list-container {
+      background: white;
+      padding: 20px;
+      max-width: 500px;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: green;
+      color: white;
+      border: none;
+      margin-top: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Sign Up for the Match</h2>
+    <input type="text" id="name" placeholder="Full Name" required />
+    <input type="text" id="number" placeholder="Phone Number" required />
+    <select id="position">
+      <option value="">Select Position</option>
+      <option>Goalkeeper</option>
+      <option>Defender</option>
+      <option>Midfielder</option>
+      <option>Forward</option>
+    </select>
+    <button onclick="addPlayer()">Submit</button>
+  </div>
+
+  <div class="list-container">
+    <h2>List of Players</h2>
+    <table id="playerList">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Position</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    function addPlayer() {
+      const name = document.getElementById('name').value;
+      const number = document.getElementById('number').value;
+      const position = document.getElementById('position').value;
+
+      if (!name || !number || !position) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const table = document.getElementById('playerList').getElementsByTagName('tbody')[0];
+      const newRow = table.insertRow();
+      newRow.insertCell(0).innerText = name;
+      newRow.insertCell(1).innerText = number;
+      newRow.insertCell(2).innerText = position;
+
+      // Clear inputs
+      document.getElementById('name').value = '';
+      document.getElementById('number').value = '';
+      document.getElementById('position').value = '';
+    }
+  </script>
+
+</body>
+</html>
